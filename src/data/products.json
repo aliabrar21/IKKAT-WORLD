@@ -7,10 +7,10 @@
     "availability": "Only 1 Piece",
     "stock": 1,
     "images": [
-      "/public/images/Royal_Maroon_Silk_Ikat_Saree.png",
-      "/public/images/Royal_Maroon_Silk_Ikat_Saree1.png",
-      "/public/images/Royal_Maroon_Silk_Ikat_Saree2.png",
-      "/public/images/Royal_Maroon_Silk_Ikat_Saree3.png"
+      "/images/Royal_Maroon_Silk_Ikat_Saree.png",
+      "/images/Royal_Maroon_Silk_Ikat_Saree1.png",
+      "/images/Royal_Maroon_Silk_Ikat_Saree2.png",
+      "/images/Royal_Maroon_Silk_Ikat_Saree3.png"
     ],
     "fabric": "Pure Silk",
     "length": "6.5 meters",
@@ -26,10 +26,10 @@
     "availability": "Made to Order (30 Days)",
     "stock": 0,
     "images": [
-      "/public/images/Cream_Gold_Cotton_Ikat_Saree.png",
-      "/public/images/Cream_Gold_Cotton_Ikat_Saree1.png",
-      "/public/images/Cream_Gold_Cotton_Ikat_Saree2.png", 
-      "/public/images/Cream_Gold_Cotton_Ikat_Saree3.png"      
+      "/images/Cream_Gold_Cotton_Ikat_Saree.png",
+      "/images/Cream_Gold_Cotton_Ikat_Saree1.png",
+      "/images/Cream_Gold_Cotton_Ikat_Saree2.png", 
+      "/images/Cream_Gold_Cotton_Ikat_Saree3.png"      
     ],
     "fabric": "Pure Cotton",
     "length": "6 meters",
@@ -45,9 +45,9 @@
     "availability": "Out of Stock",
     "stock": 0,
     "images": [
-      "/public/images/Burgundy_Traditional_Ikat_Saree.png",
-      "/public/images/Burgundy_Traditional_Ikat_Saree1.png",
-      "/public/images/Burgundy_Traditional_Ikat_Saree2.png"
+      "/images/Burgundy_Traditional_Ikat_Saree.png",
+      "/images/Burgundy_Traditional_Ikat_Saree1.png",
+      "/images/Burgundy_Traditional_Ikat_Saree2.png"
     ],
     "fabric": "Pure Silk",
     "length": "6.5 meters",
@@ -63,9 +63,9 @@
     "availability": "Only 1 Piece",
     "stock": 1,
     "images": [
-      "/public/images/Elegant_Beige_Silk_Ikat_Saree.png",
-      "/public/images/Elegant_Beige_Silk_Ikat_Saree1.png",
-      "/public/images/Elegant_Beige_Silk_Ikat_Saree2.png"
+      "/images/Elegant_Beige_Silk_Ikat_Saree.png",
+      "/images/Elegant_Beige_Silk_Ikat_Saree1.png",
+      "/images/Elegant_Beige_Silk_Ikat_Saree2.png"
     ],
     "fabric": "Pure Silk",
     "length": "6.5 meters",
@@ -81,9 +81,9 @@
     "availability": "Only 1 Piece",
     "stock": 1,
     "images": [
-      "/public/images/Classic_White_Cotton_Ikat_Dupatta.png",
-      "/public/images/Classic_White_Cotton_Ikat_Dupatta1.png",
-      "/public/images/Classic_White_Cotton_Ikat_Dupatta2.png"
+      "/images/Classic_White_Cotton_Ikat_Dupatta.png",
+      "/images/Classic_White_Cotton_Ikat_Dupatta1.png",
+      "/images/Classic_White_Cotton_Ikat_Dupatta2.png"
     ],
     "fabric": "Pure Cotton",
     "length": "2.5 meters",
@@ -99,9 +99,9 @@
     "availability": "Made to Order (30 Days)",
     "stock": 0,
     "images": [
-      "/public/images/Traditional_Maroon_Cotton_Ikat_Saree.png",
-      "/public/images/Traditional_Maroon_Cotton_Ikat_Saree1.png",
-      "/public/images/Traditional_Maroon_Cotton_Ikat_Saree2.png"
+      "/images/Traditional_Maroon_Cotton_Ikat_Saree.png",
+      "/images/Traditional_Maroon_Cotton_Ikat_Saree1.png",
+      "/images/Traditional_Maroon_Cotton_Ikat_Saree2.png"
     ],
     "fabric": "Pure Cotton",
     "length": "6 meters",
@@ -117,9 +117,9 @@
     "availability": "Made to Order (30 Days)",
     "stock": 0,
     "images": [
-      "/public/images/Luxury_Gold_Cream_Silk_Ikat_Lehenga.png",
-      "/public/images/Luxury_Gold_Cream_Silk_Ikat_Lehenga1.png",
-      "/public/images/Luxury_Gold_Cream_Silk_Ikat_Lehenga2.png"
+      "/images/Luxury_Gold_Cream_Silk_Ikat_Lehenga.png",
+      "/images/Luxury_Gold_Cream_Silk_Ikat_Lehenga1.png",
+      "/images/Luxury_Gold_Cream_Silk_Ikat_Lehenga2.png"
     ],
     "fabric": "Pure Silk",
     "length": "Lehenga Set",
@@ -135,10 +135,10 @@
     "availability": "Only 1 Piece",
     "stock": 1,
     "images": [
-      "/public/images/Heritage_Red_Silk_Ikat_Saree.png",
-      "/public/images/Heritage_Red_Silk_Ikat_Saree1.png",
-      "/public/images/Heritage_Red_Silk_Ikat_Saree2.png",
-      "/public/images/Heritage_Red_Silk_Ikat_Saree3.png"
+      "/images/Heritage_Red_Silk_Ikat_Saree.png",
+      "/images/Heritage_Red_Silk_Ikat_Saree1.png",
+      "/images/Heritage_Red_Silk_Ikat_Saree2.png",
+      "/images/Heritage_Red_Silk_Ikat_Saree3.png"
     ],
     "fabric": "Pure Silk",
     "length": "6.5 meters",
