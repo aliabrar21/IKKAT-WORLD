@@ -4,7 +4,8 @@ import jwt from 'jsonwebtoken';
 import sendEmail from '../utils/sendEmail.js';
 
 const generateToken = (id, role) => {
-    return jwt.sign({ id, role }, process.env.JWT_SECRET, {
+    const secret = process.env.JWT_SECRET || 'pochampally_secret_key_fallback';
+    return jwt.sign({ id, role }, secret, {
         expiresIn: '30d',
     });
 };
@@ -73,8 +74,12 @@ export const login = async (req, res) => {
             res.status(401).json({ message: 'Invalid email or password' });
         }
     } catch (error) {
-        console.error('LOGIN ERROR:', error);
-        res.status(500).json({ message: 'Server login error', error: error.message });
+        console.error('LOGIN ERROR DETAILS:', error);
+        res.status(500).json({ 
+            message: 'Server login error', 
+            error: error.message,
+            stack: process.env.NODE_ENV === 'development' ? error.stack : undefined 
+        });
     }
 };
 
