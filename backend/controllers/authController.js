@@ -27,30 +27,16 @@ export const register = async (req, res) => {
             email,
             password: hashedPassword,
             role: role === 'ADMIN' ? 'ADMIN' : 'USER',
+            is_verified: true // Set to true since we're removing OTP
         }).returning('*');
 
         if (user) {
-            const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
-            const expiresAt = new Date(Date.now() + 5 * 60000);
-
-            await db('otps').insert({
-                email: user.email,
-                otp_code: otpCode,
-                type: 'SIGNUP',
-                expires_at: expiresAt
-            });
-
-            sendEmail({
-                email: user.email,
-                subject: 'Pochampally Ikkat - Verify your account',
-                html: `<h3>Welcome to Pochampally Ikkat Authentic Handloom!</h3>
-                       <p>Your OTP for signing up is: <strong>${otpCode}</strong></p>
-                       <p>This OTP is valid for 5 minutes.</p>`
-            });
-
             res.status(201).json({
-                message: 'Account created. Please verify OTP sent to your email.',
+                id: user.id,
+                name: user.name,
                 email: user.email,
+                role: user.role,
+                token: generateToken(user.id, user.role),
             });
         } else {
             res.status(400).json({ message: 'Invalid user data' });
@@ -67,28 +53,13 @@ export const login = async (req, res) => {
         const user = await db('users').where({ email }).first();
 
         if (user && (await bcrypt.compare(password, user.password))) {
-            const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
-            const expiresAt = new Date(Date.now() + 5 * 60000);
-
-            await db('otps').where({ email, type: 'LOGIN' }).del(); // clear previous
-
-            await db('otps').insert({
+            res.json({
+                id: user.id,
+                name: user.name,
                 email: user.email,
-                otp_code: otpCode,
-                type: 'LOGIN',
-                expires_at: expiresAt
+                role: user.role,
+                token: generateToken(user.id, user.role),
             });
-
-            // Fire and forget email to allow immediate response
-            sendEmail({
-                email: user.email,
-                subject: 'Pochampally Ikkat - Login Verification',
-                html: `<h3>Login OTP Authorization</h3>
-                       <p>Your OTP for logging in is: <strong>${otpCode}</strong></p>
-                       <p>This OTP is valid for 5 minutes. Do not share this with anyone.</p>`
-            });
-
-            res.json({ message: 'OTP sent to email. Please verify.', email: user.email });
         } else {
             res.status(401).json({ message: 'Invalid email or password' });
         }
