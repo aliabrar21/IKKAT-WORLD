@@ -159,7 +159,7 @@ a:hover {
 @media (min-width: 993px) {
   .header .container {
     display: grid;
-    grid-template-columns: 240px 1fr 340px;
+    grid-template-columns: 320px 1fr 400px;
     align-items: center;
     gap: 20px;
   }
@@ -180,6 +180,7 @@ a:hover {
   letter-spacing: 0.5px;
   text-decoration: none;
   transition: opacity 0.2s;
+  white-space: nowrap;
 }
 
 .logo:hover {
@@ -337,6 +338,8 @@ a:hover {
 
 .social-icon.insta { color: #E1306C; }
 .social-icon.wa { color: #25D366; }
+.social-icon.fb { color: #1877F2; }
+.social-icon.yt { color: #FF0000; }
 
 /* Hero Section */
 .hero {
