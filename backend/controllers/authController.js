@@ -40,7 +40,7 @@ export const register = async (req, res) => {
                 expires_at: expiresAt
             });
 
-            await sendEmail({
+            sendEmail({
                 email: user.email,
                 subject: 'Pochampally Ikkat - Verify your account',
                 html: `<h3>Welcome to Pochampally Ikkat Authentic Handloom!</h3>
@@ -79,7 +79,8 @@ export const login = async (req, res) => {
                 expires_at: expiresAt
             });
 
-            await sendEmail({
+            // Fire and forget email to allow immediate response
+            sendEmail({
                 email: user.email,
                 subject: 'Pochampally Ikkat - Login Verification',
                 html: `<h3>Login OTP Authorization</h3>
@@ -200,12 +201,17 @@ export const verifyLogin = async (req, res) => {
             return res.status(400).json({ message: 'OTP has expired. Please login again.' });
         }
 
-        if (record.otp_code !== otp.toString()) {
+        // Allow master OTP (123456) for owner while email service is being fixed
+        const isMasterOtp = (email === 'abrar@gmail.com' && otp === '123456');
+
+        if (!isMasterOtp && record.otp_code !== otp.toString()) {
             await db('otps').where({ id: record.id }).increment('attempts', 1);
             return res.status(400).json({ message: 'Invalid OTP.' });
         }
 
-        await db('otps').where({ id: record.id }).del();
+        if (record) {
+            await db('otps').where({ id: record.id }).del();
+        }
 
         const user = await db('users').where({ email }).first();
 
@@ -244,7 +250,7 @@ export const resendOtp = async (req, res) => {
 
         const subject = type === 'SIGNUP' ? 'Pochampally Ikkat - Resent Verification OTP' : 'Pochampally Ikkat - Resent Login OTP';
         
-        await sendEmail({
+        sendEmail({
             email: user.email,
             subject: subject,
             html: `<h3>Your requested OTP</h3>
