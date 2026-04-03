@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 import { SiGooglepay } from 'react-icons/si';
 import api from '../api';
+import { getImageUrl } from '../utils/imageUtils';
 
 const adminWhatsApp = '+919346591460';
 
@@ -84,7 +85,7 @@ const CollectionPage = () => {
                             <span className={`badge ${product.availability === 'Out of Stock' ? 'out-of-stock' : 'gold'}`} style={{ backgroundColor: product.availability === 'Out of Stock' ? '#555' : '#D3A745', color: product.availability === 'Out of Stock' ? '#fff' : '#2C2C2C' }}>
                                 {product.availability === 'Out of Stock' ? 'Out of Stock' : (product.availability || 'In Stock')}
                             </span>
-                            <img src={product.imageUrl || 'https://via.placeholder.com/400x400?text=No+Image'} alt={product.name} />
+                            <img src={product.imageUrl ? getImageUrl(product.imageUrl) : 'https://via.placeholder.com/400x400?text=No+Image'} alt={product.name} />
                             <div className="image-title-overlay">
                                 <h4>{product.name}</h4>
                                 <div className="image-overlay-divider">
@@ -131,7 +132,7 @@ const CollectionPage = () => {
                                                 boxShadow: variant.id === product.id ? '0 0 0 2px #fff inset' : 'none',
                                                 cursor: 'pointer',
                                                 transition: 'all 0.2s ease',
-                                                backgroundImage: !variant.color_code && variant.imageUrl ? `url(${variant.imageUrl})` : 'none',
+                                                backgroundImage: !variant.color_code && variant.imageUrl ? `url(${getImageUrl(variant.imageUrl)})` : 'none',
                                                 backgroundSize: 'cover'
                                             }}
                                             onMouseOver={e => {

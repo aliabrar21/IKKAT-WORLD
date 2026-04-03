@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaPlus, FaEdit, FaTrash, FaImage } from 'react-icons/fa';
 import api from '../api';
+import { getImageUrl } from '../utils/imageUtils';
 
 const ProductsPage = () => {
     const [products, setProducts] = useState([]);
@@ -147,7 +148,7 @@ const ProductsPage = () => {
                                 <td style={{ padding: '15px 10px' }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                                         <div style={{ width: '40px', height: '40px', backgroundColor: '#f5f8fa', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-                                            {product.imageUrl ? <img src={product.imageUrl} alt="prod" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <FaImage color="#b5b5c3" />}
+                                            {product.imageUrl ? <img src={getImageUrl(product.imageUrl)} alt="prod" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <FaImage color="#b5b5c3" />}
                                         </div>
                                         {product.name}
                                     </div>
@@ -239,7 +240,7 @@ const ProductsPage = () => {
                                     {/* Existing Images */}
                                     {newProduct.images && newProduct.images.map((img, index) => (
                                         <div key={`existing-${index}`} style={{ display: 'inline-block', position: 'relative', border: '1px solid #ddd', padding: '5px', borderRadius: '4px' }}>
-                                            <img src={img} width="60" height="60" style={{ objectFit: 'cover', display: 'block' }} alt="Existing" />
+                                            <img src={getImageUrl(img)} width="60" height="60" style={{ objectFit: 'cover', display: 'block' }} alt="Existing" />
                                             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
                                                 <button type="button" onClick={() => {
                                                     if (index > 0) {

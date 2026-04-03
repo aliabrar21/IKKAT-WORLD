@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api';
+import { getImageUrl } from '../utils/imageUtils';
 
 const HeritageSettingsPage = () => {
     const [formData, setFormData] = useState({
@@ -139,7 +140,7 @@ const HeritageSettingsPage = () => {
                     <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Side Image</label>
                     {formData.imageUrl && (
                         <div style={{ marginBottom: '10px' }}>
-                            <img src={formData.imageUrl} alt="Current" style={{ width: '200px', height: '150px', objectFit: 'cover', borderRadius: '8px' }} />
+                            <img src={getImageUrl(formData.imageUrl)} alt="Current" style={{ width: '200px', height: '150px', objectFit: 'cover', borderRadius: '8px' }} />
                         </div>
                     )}
                     <input 

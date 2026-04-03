@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 import { SiGooglepay } from 'react-icons/si';
 import api from '../api';
+import { getImageUrl } from '../utils/imageUtils';
 
 const adminWhatsApp = '+919346591460';
 
@@ -46,7 +47,7 @@ const ProductDetailPage = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 const { data } = await api.get(`/products/${id}`);
                 setProduct(data);
-                const uniqueImages = Array.from(new Set([data.imageUrl, ...(data.images || [])])).filter(Boolean);
+                const uniqueImages = Array.from(new Set([data.imageUrl, ...(data.images || [])])).filter(Boolean).map(getImageUrl);
                 if (uniqueImages.length === 0) uniqueImages.push('https://via.placeholder.com/800x800?text=No+Image');
                 setAllImages(uniqueImages);
                 setMainImg(uniqueImages[0]);
@@ -56,7 +57,7 @@ const ProductDetailPage = () => {
                     data.variants.forEach(v => {
                         if (v.imageUrl) {
                             const img = new Image();
-                            img.src = v.imageUrl;
+                            img.src = getImageUrl(v.imageUrl);
                         }
                     });
                 }
@@ -226,7 +227,7 @@ const ProductDetailPage = () => {
                                         >
                                             {!variant.color_code && variant.imageUrl && (
                                                 /* Fallback if no color code but has imageUrl */
-                                                <img src={variant.imageUrl} alt={variant.color_name} style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+                                                <img src={getImageUrl(variant.imageUrl)} alt={variant.color_name} style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
                                             )}
                                             {isOutOfStock && (
                                                 <div style={{
@@ -324,7 +325,7 @@ const ProductDetailPage = () => {
                                     <span className={`badge ${product.availability === 'Out of Stock' ? 'out-of-stock' : 'gold'}`} style={{ backgroundColor: product.availability === 'Out of Stock' ? '#555' : '#D3A745', color: product.availability === 'Out of Stock' ? '#fff' : '#2C2C2C' }}>
                                         {product.availability === 'Out of Stock' ? 'Out of Stock' : (product.availability || 'In Stock')}
                                     </span>
-                                    <img src={product.imageUrl || 'https://via.placeholder.com/400x400?text=No+Image'} alt={product.name} />
+                                    <img src={product.imageUrl ? getImageUrl(product.imageUrl) : 'https://via.placeholder.com/400x400?text=No+Image'} alt={product.name} />
                                     <div className="image-title-overlay">
                                         <h4>{product.name}</h4>
                                         <div className="image-overlay-divider">
@@ -371,7 +372,7 @@ const ProductDetailPage = () => {
                                                         boxShadow: variant.id === product.id ? '0 0 0 2px #fff inset' : 'none',
                                                         cursor: 'pointer',
                                                         transition: 'all 0.2s ease',
-                                                        backgroundImage: !variant.color_code && variant.imageUrl ? `url(${variant.imageUrl})` : 'none',
+                                                        backgroundImage: !variant.color_code && variant.imageUrl ? `url(${getImageUrl(variant.imageUrl)})` : 'none',
                                                         backgroundSize: 'cover'
                                                     }}
                                                     onMouseOver={e => {

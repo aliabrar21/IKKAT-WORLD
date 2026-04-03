@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 import { SiGooglepay } from 'react-icons/si';
 import api from '../api';
+import { getImageUrl } from '../utils/imageUtils';
 
 const adminWhatsApp = '+919346591460';
 
@@ -44,7 +45,7 @@ const HomePage = () => {
     return (
         <div>
             {/* Hero Section */}
-            <section className="hero" style={homeSettings?.heroImageUrl ? { backgroundImage: `url(${homeSettings.heroImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: 'rgba(0,0,0,0.5)', backgroundBlendMode: 'overlay' } : {}}>
+            <section className="hero" style={homeSettings?.heroImageUrl ? { backgroundImage: `url(${getImageUrl(homeSettings.heroImageUrl)})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: 'rgba(0,0,0,0.5)', backgroundBlendMode: 'overlay' } : {}}>
                 <div className="hero-content container">
                     <h1 className="hero-title">Authentic Pochampally Ikkat</h1>
                     <p className="hero-subtitle">Direct From Weavers</p>
@@ -81,7 +82,7 @@ const HomePage = () => {
                 </div>
 
                 <div style={{ flex: 1, position: 'relative', borderRadius: '16px', overflow: 'hidden', minHeight: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', backgroundColor: '#2C2C2C' }}>
-                    {heritage?.imageUrl && <img src={heritage.imageUrl} alt="Master Weaver working on a handloom" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1 }} />}
+                    {heritage?.imageUrl && <img src={getImageUrl(heritage.imageUrl)} alt="Master Weaver working on a handloom" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1 }} />}
                 </div>
             </section>
 
@@ -103,7 +104,7 @@ const HomePage = () => {
                                     <span className={`badge ${product.availability === 'Out of Stock' ? 'out-of-stock' : 'gold'}`} style={{ backgroundColor: product.availability === 'Out of Stock' ? '#555' : '#D3A745', color: product.availability === 'Out of Stock' ? '#fff' : '#2C2C2C' }}>
                                         {product.availability === 'Out of Stock' ? 'Out of Stock' : (product.availability || 'In Stock')}
                                     </span>
-                                    <img src={product.imageUrl || 'https://via.placeholder.com/400x400?text=No+Image'} alt={product.name} />
+                                    <img src={product.imageUrl ? getImageUrl(product.imageUrl) : 'https://via.placeholder.com/400x400?text=No+Image'} alt={product.name} />
                                     <div className="image-title-overlay">
                                         <h4>{product.name}</h4>
                                         <div className="image-overlay-divider">
@@ -150,7 +151,7 @@ const HomePage = () => {
                                                         boxShadow: variant.id === product.id ? '0 0 0 2px #fff inset' : 'none',
                                                         cursor: 'pointer',
                                                         transition: 'all 0.2s ease',
-                                                        backgroundImage: !variant.color_code && variant.imageUrl ? `url(${variant.imageUrl})` : 'none',
+                                                        backgroundImage: !variant.color_code && variant.imageUrl ? `url(${getImageUrl(variant.imageUrl)})` : 'none',
                                                         backgroundSize: 'cover'
                                                     }}
                                                     onMouseOver={e => {
