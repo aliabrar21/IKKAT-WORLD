@@ -33,17 +33,14 @@ const upload = multer({
 });
 
 router.post('/', upload.single('image'), (req, res) => {
-    // Generate full URL
-    const protocol = req.protocol;
-    const host = req.get('host');
-    const url = `${protocol}://${host}/uploads/${req.file.filename}`;
+    const baseUrl = process.env.BACKEND_URL || `${req.protocol}://${req.get('x-forwarded-host') || req.get('host')}`;
+    const url = `${baseUrl}/uploads/${req.file.filename}`;
     res.send({ url });
 });
 
 router.post('/multiple', upload.array('images', 10), (req, res) => {
-    const protocol = req.protocol;
-    const host = req.get('host');
-    const urls = req.files.map(file => `${protocol}://${host}/uploads/${file.filename}`);
+    const baseUrl = process.env.BACKEND_URL || `${req.protocol}://${req.get('x-forwarded-host') || req.get('host')}`;
+    const urls = req.files.map(file => `${baseUrl}/uploads/${file.filename}`);
     res.send({ urls });
 });
 
