@@ -48,6 +48,8 @@ export const getProducts = async (req, res) => {
             return { ...p, variants: [] };
         });
 
+        console.log(`[DB LOG] Fetched ${enrichedProducts.length} products successfully.`);
+
         res.json({
             products: enrichedProducts,
             page: parseInt(page),
