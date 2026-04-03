@@ -82,23 +82,6 @@ const HomePage = () => {
 
                 <div style={{ flex: 1, position: 'relative', borderRadius: '16px', overflow: 'hidden', minHeight: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', backgroundColor: '#2C2C2C' }}>
                     {heritage?.imageUrl && <img src={heritage.imageUrl} alt="Master Weaver working on a handloom" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1 }} />}
-
-                    {/* Top gradient for title */}
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '30%', background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)', zIndex: 2 }}></div>
-
-                    {/* Bottom gradient for text */}
-                    <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '50%', background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 100%)', zIndex: 2 }}></div>
-
-                    <div style={{ position: 'relative', zIndex: 3, padding: '40px', textAlign: 'center' }}>
-                        <h3 style={{ fontSize: '2.5rem', marginBottom: '10px', color: '#fff', fontWeight: 500, fontFamily: 'var(--font-serif)' }}>Our Heritage</h3>
-                        <hr style={{ width: '60px', borderTop: '2px solid var(--color-gold)', borderBottom: 'none', borderLeft: 'none', borderRight: 'none', margin: '0 auto' }} />
-                    </div>
-
-                    <div style={{ position: 'relative', zIndex: 3, padding: '40px', textAlign: 'center' }}>
-                        <p style={{ fontSize: '0.95rem', lineHeight: '1.7', color: 'rgba(255,255,255,0.9)' }}>
-                            {heritage?.description1 || 'Preserving the timeless art of Pochampally Ikkat weaving. Each saree is handcrafted with precision and tradition, carrying forward centuries of heritage in every thread. Since 1995, we have been working directly with master weavers, ensuring authenticity and supporting the artisan community that keeps this beautiful craft alive. Our commitment goes beyond fabric — it is about preserving culture, empowering weavers, and delivering authenticity in its purest form.'}
-                        </p>
-                    </div>
                 </div>
             </section>
 
