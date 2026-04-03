@@ -1,0 +1,102 @@
+COLUMNS: id, key, value, created_at, updated_at
+
+{
+  "id": 1,
+  "key": "heritage_section",
+  "value": {
+    "estText": "Three Decades of Excellence",
+    "estYear": "Est. 1995",
+    "imageUrl": "https://ikkat-world-api.onrender.com/uploads/image-1773914067900.png",
+    "description1": "Preserving the timeless art of Pochampally Ikat weaving. Each saree is handcrafted with precision and tradition, carrying forward centuries of heritage in every thread.",
+    "description2": "Every piece we create reflects the dedication of skilled artisans who have inherited this craft through generations. From the intricate tying and dyeing of yarns to the final weaving on traditional looms, every stage is carried out with care, patience, and uncompromising attention to detail.",
+    "description3": "Since 1995, we have been working directly with master weavers, ensuring authenticity and supporting the artisan community that keeps this beautiful craft alive."
+  },
+  "created_at": "2026-03-19T09:50:36.149Z",
+  "updated_at": "2026-03-19T09:54:30.912Z"
+}
+
+---
+
+{
+  "id": 2,
+  "key": "process_page",
+  "value": {
+    "intro": {
+      "p1": "Pochampally Ikat is more than just a fabric—it's a living art form that has been passed down through generations. The name \"Ikat\" comes from the Malay-Indonesian word \"mengikat,\" meaning \"to tie\" or \"to bind,\" referring to the resist-dyeing technique that creates these distinctive patterns.",
+      "p2": "Each piece takes weeks, sometimes months, to complete. From the initial design to the final thread, every step is performed by hand with meticulous attention to detail. Our weavers are not just craftspeople—they are artists preserving a heritage that dates back centuries.",
+      "p3": "What makes Pochampally Ikat unique is the precision required in aligning the dyed yarns during weaving. When done correctly, the patterns emerge with perfect clarity, creating geometric and floral motifs that are instantly recognizable."
+    },
+    "steps": [
+      {
+        "desc": "The journey begins with conceptualizing the design. Our master weavers sketch traditional Ikat patterns, ensuring each motif carries forward centuries of heritage.",
+        "title": "Design & Planning"
+      },
+      {
+        "desc": "High-quality silk or cotton yarns are carefully selected and prepared. The yarns are then wound onto bobbins, ready for the intricate dyeing process.",
+        "title": "Yarn Preparation"
+      },
+      {
+        "desc": "This is the heart of Ikat weaving. Sections of yarn are tightly bound with threads before dyeing, creating resist patterns. The process is repeated multiple times with different colors to achieve the desired design.",
+        "title": "Resist Dyeing (Ikat Technique)"
+      },
+      {
+        "desc": "The dyed yarns are carefully arranged on the loom as warp threads. This requires immense skill and precision, as the alignment determines the final pattern quality.",
+        "title": "Warping & Setting Up the Loom"
+      },
+      {
+        "desc": "The actual weaving begins. Our skilled artisans work on traditional handlooms, carefully interlacing the weft threads with the warp. Each pass of the shuttle is deliberate and precise.",
+        "title": "Hand Weaving"
+      },
+      {
+        "desc": "Once weaving is complete, the fabric undergoes careful finishing. Edges are hemmed, and each piece is thoroughly inspected to ensure it meets our exacting standards of quality and authenticity.",
+        "title": "Finishing & Quality Check"
+      }
+    ],
+    "artisans": {
+      "p1": "Behind every saree is a master weaver who has dedicated their life to perfecting this craft. Many of our artisans come from families that have been weaving Ikat for generations, with skills passed down from parent to child",
+      "p2": "We work directly with these talented craftspeople, ensuring fair compensation and supporting the continuation of this beautiful tradition. When you purchase a Pochampally Ikat piece from us, you're not just buying a saree—you're supporting an entire community of artisans and helping preserve a cultural heritage.",
+      "image": "https://ikkat-world-api.onrender.com/uploads/image-1773915976605.png",
+      "quote": "\"Every thread tells a story. Every pattern carries a memory. This is not just weaving—it's keeping our heritage alive.\"",
+      "quoteAuthor": "— Master Weaver, Pochampally"
+    },
+    "timeline": [
+      {
+        "desc": "Started working directly with master weavers in Pochampally",
+        "year": "1995",
+        "title": "Foundation"
+      },
+      {
+        "desc": "Received recognition for preserving traditional Ikat techniques",
+        "year": "2005",
+        "title": "Recognition"
+      },
+      {
+        "desc": "Expanded to serve customers across India",
+        "year": "2015",
+        "title": "Expansion"
+      },
+      {
+        "desc": "Continuing to preserve and promote authentic Pochampally Ikkat",
+        "year": "2025",
+        "title": "Today"
+      }
+    ]
+  },
+  "created_at": "2026-03-19T10:26:16.645Z",
+  "updated_at": "2026-03-19T10:30:39.476Z"
+}
+
+---
+
+{
+  "id": 3,
+  "key": "home_page",
+  "value": {
+    "heroImageUrl": "https://ikkat-world-api.onrender.com/uploads/image-1774355453657.png"
+  },
+  "created_at": "2026-03-24T12:30:53.773Z",
+  "updated_at": "2026-03-24T12:30:53.773Z"
+}
+
+---
+

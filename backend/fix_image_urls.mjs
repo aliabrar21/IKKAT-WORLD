@@ -11,26 +11,25 @@ async function fixUrls() {
     console.log(`Replacing: ${OLD_BASE}  →  ${NEW_BASE}\n`);
     let fixedCount = 0;
 
+    // 1. Fix products table
     const products = await db('products').select('id', 'imageUrl', 'images');
 
     for (const product of products) {
         let needsUpdate = false;
         const updates = {};
 
-        // Fix primary imageUrl
         if (product.imageUrl && product.imageUrl.includes('localhost')) {
             updates.imageUrl = product.imageUrl.replace(OLD_BASE, NEW_BASE);
             needsUpdate = true;
         }
 
-        // Fix images array — Knex returns it as a real JS array from Postgres
         if (Array.isArray(product.images)) {
             const fixed = product.images.map(url =>
                 url && url.includes('localhost') ? url.replace(OLD_BASE, NEW_BASE) : url
             );
             const hasChanges = fixed.some((url, i) => url !== product.images[i]);
             if (hasChanges) {
-                updates.images = fixed; // Knex will serialize it back to Postgres array
+                updates.images = fixed;
                 needsUpdate = true;
             }
         }
@@ -42,44 +41,48 @@ async function fixUrls() {
         }
     }
 
-    // Fix site_settings
-    try {
-        const settings = await db('site_settings').select('*');
-        const cols = Object.keys(await db('site_settings').columnInfo());
-        
-        for (const row of settings) {
-            const updates = {};
-            for (const col of cols) {
-                const val = row[col];
-                if (typeof val === 'string' && val.includes('localhost')) {
-                    let newVal = val;
-                    try {
-                        const obj = JSON.parse(val);
-                        let changed = false;
-                        for (const k of Object.keys(obj)) {
-                            if (typeof obj[k] === 'string' && obj[k].includes('localhost')) {
-                                obj[k] = obj[k].replace(OLD_BASE, NEW_BASE);
-                                changed = true;
-                            }
-                        }
-                        if (changed) newVal = JSON.stringify(obj);
-                    } catch {
-                        newVal = val.split(OLD_BASE).join(NEW_BASE);
-                    }
-                    if (newVal !== val) updates[col] = newVal;
+    // 2. Fix site_settings table
+    const settings = await db('site_settings').select('*');
+    for (const row of settings) {
+        let val = row.value;
+        let needsUpdate = false;
+
+        // Recursive function to replace URLs in deep objects/arrays
+        const replaceInObj = (obj) => {
+            let changed = false;
+            if (typeof obj === 'string') {
+                if (obj.includes('localhost')) {
+                    return { val: obj.replace(new RegExp(OLD_BASE, 'g'), NEW_BASE), changed: true };
                 }
+                return { val: obj, changed: false };
+            } else if (Array.isArray(obj)) {
+                const newArr = obj.map(item => {
+                    const res = replaceInObj(item);
+                    if (res.changed) changed = true;
+                    return res.val;
+                });
+                return { val: newArr, changed };
+            } else if (obj !== null && typeof obj === 'object') {
+                const newObj = {};
+                for (const k in obj) {
+                    const res = replaceInObj(obj[k]);
+                    if (res.changed) changed = true;
+                    newObj[k] = res.val;
+                }
+                return { val: newObj, changed };
             }
-            if (Object.keys(updates).length > 0) {
-                await db('site_settings').where('id', row.id).update(updates);
-                console.log(`  ✓ site_settings row ID ${row.id} fixed`);
-                fixedCount++;
-            }
+            return { val: obj, changed: false };
+        };
+
+        const result = replaceInObj(val);
+        if (result.changed) {
+            await db('site_settings').where('id', row.id).update({ value: result.val });
+            console.log(`  ✓ site_settings row ID ${row.id} (${row.key}) fixed`);
+            fixedCount++;
         }
-    } catch (e) {
-        console.log('  (site_settings: skipped or empty —', e.message, ')');
     }
 
-    console.log(`\n✅ Done! Fixed ${fixedCount} records.`);
+    console.log(`\n✅ Done! Fixed ${fixedCount} records total.`);
     await db.destroy();
 }
 

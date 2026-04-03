@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaLayerGroup, FaRegClock, FaTint, FaGripLines, FaCube, FaCheck } from 'react-icons/fa';
 import api from '../api';
+import { getImageUrl } from '../utils/imageUtils';
 
 const WeavingProcessPage = () => {
     const [processSettings, setProcessSettings] = useState(null);
@@ -126,7 +127,7 @@ const WeavingProcessPage = () => {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '50px', alignItems: 'center' }}>
                         {/* Single Image Display - Left Side */}
                         <div style={{ position: 'relative' }}>
-                            <img src={artisanImg} alt="Artisan" style={{ width: '100%', height: 'auto', maxHeight: '700px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }} />
+                            <img src={getImageUrl(artisanImg)} alt="Artisan" style={{ width: '100%', height: 'auto', maxHeight: '700px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }} />
                             <div style={{ position: 'absolute', bottom: '20px', left: 0, right: 0, textAlign: 'center', color: '#fff', textShadow: '1px 1px 10px rgba(0,0,0,0.9)' }}>
                                 <h5 style={{ fontSize: '1.2rem', margin: 0, fontWeight: 'normal' }}>Authentic</h5>
                                 <h4 style={{ fontSize: '2rem', margin: 0, fontFamily: 'var(--font-serif)' }}>Pochampally Ikat</h4>
