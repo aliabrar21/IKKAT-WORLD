@@ -50,11 +50,11 @@ const CollectionPage = () => {
 
     return (
         <div className="container" style={{ padding: '60px 20px' }}>
-            <h1 style={{ textAlign: 'center', marginBottom: '20px', fontSize: '2.5rem' }}>Our Collection</h1>
-            <p style={{ textAlign: 'center', marginBottom: '40px', color: '#666' }}>Discover the finest authentic Pochampally Ikkat creations</p>
+            <h1 className="section-title">Our Collection</h1>
+            <p className="section-desc">Discover the finest authentic Pochampally Ikkat creations</p>
 
             {/* Filters and Search */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '40px', alignItems: 'center' }}>
+            <div className="filter-wrap">
                 <input
                     type="text"
                     placeholder="Search products..."

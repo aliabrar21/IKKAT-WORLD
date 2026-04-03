@@ -60,9 +60,10 @@ const HomePage = () => {
             </section>
 
             {/* Our Heritage */}
-            <section className="heritage-section container" style={{ padding: '80px 20px', display: 'flex', gap: '50px', alignItems: 'stretch' }}>
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <h2 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>Our Heritage</h2>
+            <section className="heritage-section container">
+                <div className="heritage-layout">
+                    <div className="heritage-text">
+                        <h2 className="section-title" style={{ textAlign: 'left' }}>Our Heritage</h2>
                     <hr style={{ width: '50px', borderTop: '2px solid var(--color-gold)', borderBottom: 'none', borderLeft: 'none', borderRight: 'none', margin: '0 0 30px 0' }} />
 
                     <p style={{ color: '#555', marginBottom: '25px', fontSize: '1.05rem', lineHeight: '1.8' }}>
@@ -80,9 +81,10 @@ const HomePage = () => {
                         <p style={{ fontStyle: 'italic', color: '#666', fontSize: '0.95rem', margin: 0 }}>{heritage?.estText || 'Three Decades of Excellence'}</p>
                     </div>
                 </div>
+            </div>
 
-                <div style={{ flex: 1, position: 'relative', borderRadius: '16px', overflow: 'hidden', minHeight: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', backgroundColor: '#2C2C2C' }}>
-                    {heritage?.imageUrl && <img src={getImageUrl(heritage.imageUrl)} alt="Master Weaver working on a handloom" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1 }} />}
+            <div className="heritage-image">
+                    {heritage?.imageUrl && <img src={getImageUrl(heritage.imageUrl)} alt="Master Weaver working on a handloom" />}
                 </div>
             </section>
 
@@ -93,8 +95,8 @@ const HomePage = () => {
                     {/* Decorative gold dash aligned to left container edge */}
                     <div style={{ position: 'absolute', left: '20px', top: '25px', width: '50px', height: '2px', backgroundColor: 'var(--color-gold)' }}></div>
 
-                    <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                        <h2 style={{ fontSize: '2.8rem', marginBottom: '15px' }}>Featured Collection</h2>
+                    <div className="featured-title-wrap">
+                        <h2 className="section-title">Featured Collection</h2>
                         <p style={{ color: '#666', fontSize: '1.05rem' }}>Handpicked pieces from our exclusive collection</p>
                     </div>
                     <div className="grid-cards">

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { FaWhatsapp, FaInstagram, FaYoutube, FaSearch, FaFacebook } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram, FaYoutube, FaSearch, FaFacebook, FaBars, FaTimes } from 'react-icons/fa';
 
 const Layout = () => {
     const [userInfo, setUserInfo] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
@@ -33,13 +36,13 @@ const Layout = () => {
     return (
         <>
             <header className="header" style={{ padding: '15px 0' }}>
-                <div className="container" style={{ display: 'grid', gridTemplateColumns: 'auto 1fr auto', alignItems: 'center', gap: '20px' }}>
+                <div className="container">
                     <div className="logo-container" style={{ display: 'flex', flexDirection: 'column' }}>
                         <Link to="/" className="logo" style={{ lineHeight: 1.1 }}>Pochampally Ikkat</Link>
                         <span style={{ fontSize: '0.65rem', color: '#888', letterSpacing: '2px', marginTop: '2px' }}>AUTHENTIC HANDLOOM</span>
                     </div>
 
-                    <nav className="nav-links" style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+                    <nav className="nav-links">
                         <Link to="/" style={{ color: location.pathname === '/' ? 'var(--color-maroon)' : '#555', borderBottom: location.pathname === '/' ? '2px solid var(--color-maroon)' : 'none', paddingBottom: '3px', whiteSpace: 'nowrap' }}>Home</Link>
                         <Link to="/collection" style={{ color: location.pathname === '/collection' ? 'var(--color-maroon)' : '#555', borderBottom: location.pathname === '/collection' ? '2px solid var(--color-maroon)' : 'none', paddingBottom: '3px', whiteSpace: 'nowrap' }}>Collection</Link>
                         <Link to="/weaving-process" style={{ color: location.pathname === '/weaving-process' ? 'var(--color-maroon)' : '#555', borderBottom: location.pathname === '/weaving-process' ? '2px solid var(--color-maroon)' : 'none', paddingBottom: '3px', whiteSpace: 'nowrap' }}>Our Process</Link>
@@ -47,7 +50,7 @@ const Layout = () => {
                         <Link to="/contact" style={{ color: location.pathname === '/contact' ? 'var(--color-maroon)' : '#555', borderBottom: location.pathname === '/contact' ? '2px solid var(--color-maroon)' : 'none', paddingBottom: '3px', whiteSpace: 'nowrap' }}>Contact</Link>
                     </nav>
 
-                    <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '15px' }}>
+                    <div className="header-actions" style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '15px' }}>
                         <form onSubmit={handleSearchSubmit} style={{ display: 'flex', alignItems: 'center', background: '#f5f5f5', borderRadius: '20px', padding: '5px 15px' }}>
                             <input 
                                 type="text"
@@ -97,20 +100,34 @@ const Layout = () => {
                             <Link to="/login" style={{ fontSize: '0.9rem', color: '#666' }}>Login</Link>
                         )}
                         <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: '#1877F2', display: 'flex', alignItems: 'center', transition: 'transform 0.2s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
-                                <FaFacebook size={24} />
-                            </a>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: '#E1306C', display: 'flex', alignItems: 'center', transition: 'transform 0.2s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: '#E1306C', display: 'flex', alignItems: 'center' }}>
                                 <FaInstagram size={24} />
                             </a>
-                            <a href="https://wa.me/919346591460" target="_blank" rel="noopener noreferrer" style={{ color: '#25D366', display: 'flex', alignItems: 'center', transition: 'transform 0.2s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
+                            <a href="https://wa.me/919346591460" target="_blank" rel="noopener noreferrer" style={{ color: '#25D366', display: 'flex', alignItems: 'center' }}>
                                 <FaWhatsapp size={24} />
-                            </a>
-                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style={{ color: '#FF0000', display: 'flex', alignItems: 'center', transition: 'transform 0.2s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
-                                <FaYoutube size={24} />
                             </a>
                         </div>
                     </div>
+
+                    <button className="hamburger-btn" onClick={toggleMenu}>
+                        {isMenuOpen ? <FaTimes /> : <FaBars />}
+                    </button>
+                </div>
+
+                {/* Mobile Menu Overlay */}
+                <div className={`mobile-menu-overlay ${isMenuOpen ? 'open' : ''}`}>
+                    <nav className="mobile-nav-links">
+                        <Link to="/" onClick={toggleMenu}>Home</Link>
+                        <Link to="/collection" onClick={toggleMenu}>Collection</Link>
+                        <Link to="/weaving-process" onClick={toggleMenu}>Our Process</Link>
+                        <Link to="/custom-order" onClick={toggleMenu}>Custom Order</Link>
+                        <Link to="/contact" onClick={toggleMenu}>Contact</Link>
+                        {userInfo ? (
+                            <button onClick={handleLogout} style={{ background: 'none', border: '1px solid white', color: 'white', padding: '10px 20px', borderRadius: '5px', fontSize: '1.5rem', marginTop: '20px' }}>Logout</button>
+                        ) : (
+                            <Link to="/login" onClick={toggleMenu}>Login</Link>
+                        )}
+                    </nav>
                 </div>
             </header>
 

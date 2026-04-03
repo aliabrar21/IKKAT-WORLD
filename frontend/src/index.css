@@ -50,6 +50,27 @@ a:hover {
   padding: 0 20px;
 }
 
+.section-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.8rem;
+}
+
+.section-desc {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.filter-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -251,6 +272,62 @@ a:hover {
 
 .hero-btn-solid:hover {
   background-color: #52141c;
+}
+
+/* Section Specific Layouts */
+.heritage-section {
+  padding: 80px 0;
+  display: flex !important;
+  gap: 50px;
+  align-items: stretch;
+}
+
+.heritage-layout {
+  display: flex;
+  gap: 50px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.heritage-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heritage-image {
+  flex: 1;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  background-color: #2C2C2C;
+}
+
+.heritage-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.featured-section {
+  padding: 80px 0;
+}
+
+.featured-title-wrap {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.featured-title-wrap h2 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
 }
 
 /* Grid & Cards */
@@ -500,3 +577,175 @@ a:hover {
   border-top: 1px solid rgba(235, 229, 217, 0.2);
   font-size: 0.9rem;
 }
+
+/* ------------------------------------------------------------
+   📱 MOBILE RESPONSIVENESS (Media Queries)
+   ------------------------------------------------------------ */
+
+/* Small Desktop / Tablet (992px) */
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+/* Tablet (768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  /* We hide the standard nav links and use the burger instead */
+  .header .nav-links {
+    display: none !important;
+  }
+
+  .header .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .hero-btn-outline, .hero-btn-solid {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  /* Heritage & Sections Responsive */
+  .heritage-section {
+    padding: 40px 15px !important;
+    gap: 30px !important;
+  }
+
+  .heritage-layout {
+    flex-direction: column-reverse !important;
+  }
+
+  .heritage-text, .heritage-image {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .heritage-image {
+    min-height: 400px !important;
+  }
+
+  .featured-title-wrap h2 {
+    font-size: 2.2rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem !important;
+  }
+
+  .section-desc {
+    font-size: 0.95rem !important;
+    margin-bottom: 30px !important;
+  }
+
+  .weaving-content {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  .weaving-text, .weaving-image {
+    width: 100% !important;
+  }
+}
+
+/* Mobile (480px) */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .grid-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card-image-wrap {
+    height: 350px;
+  }
+
+  .header-actions {
+    display: none !important; /* Hide secondary actions like search/social on very small screens or move to menu */
+  }
+}
+
+/* Mobile Menu Helper Classes (used by Layout.jsx) */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-maroon);
+  z-index: 1000;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu-overlay.open {
+  transform: translateX(0);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+}
+
+.mobile-nav-links a {
+  color: white !important;
+  font-size: 1.8rem;
+  font-family: var(--font-serif);
+}
+
+.hamburger-btn {
+  background: none;
+  border: none;
+  color: var(--color-maroon);
+  cursor: pointer;
+  display: none;
+  padding: 5px;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: block;
+  }
+}
