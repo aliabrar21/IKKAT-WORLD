@@ -122,11 +122,39 @@ const Layout = () => {
                         <Link to="/weaving-process" onClick={toggleMenu}>Our Process</Link>
                         <Link to="/custom-order" onClick={toggleMenu}>Custom Order</Link>
                         <Link to="/contact" onClick={toggleMenu}>Contact</Link>
+                        
+                        <div style={{ marginTop: '20px', width: '100%', padding: '0 40px' }}>
+                            <form onSubmit={handleSearchSubmit} style={{ display: 'flex', alignItems: 'center', background: 'rgba(255,255,255,0.1)', borderRadius: '25px', padding: '10px 20px', border: '1px solid rgba(255,255,255,0.2)' }}>
+                                <input 
+                                    type="text"
+                                    placeholder="Search products..."
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    style={{ border: 'none', background: 'transparent', outline: 'none', width: '100%', fontSize: '1rem', color: 'white' }}
+                                />
+                                <button type="submit" style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'white', padding: 0 }}>
+                                    <FaSearch size={18} />
+                                </button>
+                            </form>
+                        </div>
+
                         {userInfo ? (
-                            <button onClick={handleLogout} style={{ background: 'none', border: '1px solid white', color: 'white', padding: '10px 20px', borderRadius: '5px', fontSize: '1.5rem', marginTop: '20px' }}>Logout</button>
+                            <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                                <p style={{ color: 'white', opacity: 0.8, marginBottom: '10px' }}>Welcome, {userInfo.name || userInfo.email.split('@')[0]}</p>
+                                <button onClick={handleLogout} style={{ background: 'transparent', border: '1px solid #f1416c', color: '#f1416c', padding: '10px 30px', borderRadius: '4px', fontSize: '1.2rem', fontWeight: 'bold' }}>Logout</button>
+                            </div>
                         ) : (
-                            <Link to="/login" onClick={toggleMenu}>Login</Link>
+                            <Link to="/login" onClick={toggleMenu} style={{ fontSize: '1.8rem', marginTop: '20px' }}>Login</Link>
                         )}
+
+                        <div style={{ display: 'flex', gap: '30px', marginTop: '40px' }}>
+                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
+                                <FaInstagram size={32} />
+                            </a>
+                            <a href="https://wa.me/919346591460" target="_blank" rel="noopener noreferrer" style={{ color: '#25D366' }}>
+                                <FaWhatsapp size={32} />
+                            </a>
+                        </div>
                     </nav>
                 </div>
             </header>

@@ -16,6 +16,13 @@
   box-sizing: border-box;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--color-cream);
@@ -595,8 +602,8 @@ a:hover {
     padding: 0 15px;
   }
 
-  /* We hide the standard nav links and use the burger instead */
-  .header .nav-links {
+  /* We hide the standard nav links and actions, use the burger instead */
+  .header .nav-links, .header .header-actions {
     display: none !important;
   }
 
@@ -604,6 +611,7 @@ a:hover {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
+    max-width: 100%;
   }
 
   .hero-title {
@@ -688,7 +696,7 @@ a:hover {
   }
 
   .grid-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .card-image-wrap {
