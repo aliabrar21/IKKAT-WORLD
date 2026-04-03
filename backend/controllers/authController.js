@@ -75,10 +75,10 @@ export const login = async (req, res) => {
         }
     } catch (error) {
         console.error('LOGIN ERROR DETAILS:', error);
+        // Include actual error message temporarily for production debugging
         res.status(500).json({ 
-            message: 'Server login error', 
-            error: error.message,
-            stack: process.env.NODE_ENV === 'development' ? error.stack : undefined 
+            message: `Server login error: ${error.message}`, 
+            error: error.message 
         });
     }
 };
