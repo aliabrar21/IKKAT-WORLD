@@ -22,13 +22,15 @@ export const register = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        const [user] = await db('users').insert({
+        const usersList = await db('users').insert({
             name: name || email.split('@')[0],
             email,
             password: hashedPassword,
             role: role === 'ADMIN' ? 'ADMIN' : 'USER',
-            is_verified: true // Set to true since we're removing OTP
+            is_verified: true
         }).returning('*');
+
+        const user = Array.isArray(usersList) ? usersList[0] : usersList;
 
         if (user) {
             res.status(201).json({
@@ -42,7 +44,8 @@ export const register = async (req, res) => {
             res.status(400).json({ message: 'Invalid user data' });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Server error', error: error.message });
+        console.error('REGISTRATION ERROR:', error);
+        res.status(500).json({ message: 'Server registration error', error: error.message });
     }
 };
 
@@ -52,7 +55,13 @@ export const login = async (req, res) => {
 
         const user = await db('users').where({ email }).first();
 
-        if (user && (await bcrypt.compare(password, user.password))) {
+        if (!user) {
+            return res.status(401).json({ message: 'Invalid email or password' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (isMatch) {
             res.json({
                 id: user.id,
                 name: user.name,
@@ -64,7 +73,8 @@ export const login = async (req, res) => {
             res.status(401).json({ message: 'Invalid email or password' });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Server error', error: error.message });
+        console.error('LOGIN ERROR:', error);
+        res.status(500).json({ message: 'Server login error', error: error.message });
     }
 };
 

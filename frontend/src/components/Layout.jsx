@@ -70,16 +70,22 @@ const Layout = () => {
                                         border: 'none',
                                         cursor: 'pointer',
                                         fontSize: '0.9rem',
-                                        fontWeight: 500,
-                                        color: '#555',
-                                        padding: 0,
+                                        fontWeight: 600,
+                                        color: 'var(--color-maroon)',
+                                        padding: '5px 10px',
+                                        borderRadius: '4px',
+                                        backgroundColor: '#fff',
+                                        border: '1px solid #eee',
                                         fontFamily: 'var(--font-sans)',
-                                        transition: 'color 0.3s ease'
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '8px'
                                     }}
-                                    onMouseOver={(e) => e.target.style.color = 'var(--color-maroon)'}
-                                    onMouseOut={(e) => e.target.style.color = '#555'}
                                 >
-                                    {userInfo.name || userInfo.email.split('@')[0]} ▼
+                                    <span style={{ maxWidth: '150px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                        {userInfo.name || userInfo.email.split('@')[0]}
+                                    </span>
+                                    <span style={{ fontSize: '0.7rem' }}>▼</span>
                                 </button>
                                 {showDropdown && (
                                     <div style={{ position: 'absolute', top: '100%', right: 0, marginTop: '10px', background: '#fff', boxShadow: '0 4px 15px rgba(0,0,0,0.1)', borderRadius: '4px', padding: '10px', minWidth: '120px', zIndex: 100 }}>
