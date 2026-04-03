@@ -81,10 +81,9 @@ const HomePage = () => {
                         <p style={{ fontStyle: 'italic', color: '#666', fontSize: '0.95rem', margin: 0 }}>{heritage?.estText || 'Three Decades of Excellence'}</p>
                     </div>
                 </div>
-            </div>
-
-            <div className="heritage-image">
-                    {heritage?.imageUrl && <img src={getImageUrl(heritage.imageUrl)} alt="Master Weaver working on a handloom" />}
+                    <div className="heritage-image">
+                        {heritage?.imageUrl && <img src={getImageUrl(heritage.imageUrl)} alt="Master Weaver working on a handloom" />}
+                    </div>
                 </div>
             </section>
 
