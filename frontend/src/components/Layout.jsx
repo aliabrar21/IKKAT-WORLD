@@ -84,11 +84,11 @@ const Layout = () => {
                             <Link to="/login" className="login-link">Login</Link>
                         )}
                         <div className="social-links-minimal">
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon fb">
-                                <FaFacebook size={20} />
-                            </a>
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon insta">
                                 <FaInstagram size={20} />
+                            </a>
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon fb">
+                                <FaFacebook size={20} />
                             </a>
                             <a href="https://wa.me/919346591460" target="_blank" rel="noopener noreferrer" className="social-icon wa">
                                 <FaWhatsapp size={20} />
@@ -138,17 +138,17 @@ const Layout = () => {
                         )}
 
                         <div style={{ display: 'flex', gap: '20px', marginTop: '40px', flexWrap: 'wrap', justifyContent: 'center' }}>
-                             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: '#1877F2' }}>
-                                <FaFacebook size={32} />
-                            </a>
                              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: '#E1306C' }}>
-                                <FaInstagram size={32} />
+                                <FaInstagram size={30} />
+                            </a>
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: '#1877F2' }}>
+                                <FaFacebook size={30} />
                             </a>
                             <a href="https://wa.me/919346591460" target="_blank" rel="noopener noreferrer" style={{ color: '#25D366' }}>
-                                <FaWhatsapp size={32} />
+                                <FaWhatsapp size={30} />
                             </a>
                             <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style={{ color: '#FF0000' }}>
-                                <FaYoutube size={32} />
+                                <FaYoutube size={30} />
                             </a>
                         </div>
                     </nav>
