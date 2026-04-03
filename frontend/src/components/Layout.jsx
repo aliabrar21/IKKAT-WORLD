@@ -35,76 +35,60 @@ const Layout = () => {
 
     return (
         <>
-            <header className="header" style={{ padding: '15px 0' }}>
+            <header className="header">
                 <div className="container">
-                    <div className="logo-container" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <Link to="/" className="logo" style={{ lineHeight: 1.1 }}>Pochampally Ikkat</Link>
-                        <span style={{ fontSize: '0.65rem', color: '#888', letterSpacing: '2px', marginTop: '2px' }}>AUTHENTIC HANDLOOM</span>
+                    <div className="logo-container">
+                        <Link to="/" className="logo">Pochampally Ikkat</Link>
+                        <span className="logo-subtext">AUTHENTIC HANDLOOM</span>
                     </div>
 
                     <nav className="nav-links">
-                        <Link to="/" style={{ color: location.pathname === '/' ? 'var(--color-maroon)' : '#555', borderBottom: location.pathname === '/' ? '2px solid var(--color-maroon)' : 'none', paddingBottom: '3px', whiteSpace: 'nowrap' }}>Home</Link>
-                        <Link to="/collection" style={{ color: location.pathname === '/collection' ? 'var(--color-maroon)' : '#555', borderBottom: location.pathname === '/collection' ? '2px solid var(--color-maroon)' : 'none', paddingBottom: '3px', whiteSpace: 'nowrap' }}>Collection</Link>
-                        <Link to="/weaving-process" style={{ color: location.pathname === '/weaving-process' ? 'var(--color-maroon)' : '#555', borderBottom: location.pathname === '/weaving-process' ? '2px solid var(--color-maroon)' : 'none', paddingBottom: '3px', whiteSpace: 'nowrap' }}>Our Process</Link>
-                        <Link to="/custom-order" style={{ color: location.pathname === '/custom-order' ? 'var(--color-maroon)' : '#555', borderBottom: location.pathname === '/custom-order' ? '2px solid var(--color-maroon)' : 'none', paddingBottom: '3px', whiteSpace: 'nowrap' }}>Custom Order</Link>
-                        <Link to="/contact" style={{ color: location.pathname === '/contact' ? 'var(--color-maroon)' : '#555', borderBottom: location.pathname === '/contact' ? '2px solid var(--color-maroon)' : 'none', paddingBottom: '3px', whiteSpace: 'nowrap' }}>Contact</Link>
+                        <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
+                        <Link to="/collection" className={location.pathname === '/collection' ? 'active' : ''}>Collection</Link>
+                        <Link to="/weaving-process" className={location.pathname === '/weaving-process' ? 'active' : ''}>Our Process</Link>
+                        <Link to="/custom-order" className={location.pathname === '/custom-order' ? 'active' : ''}>Custom Order</Link>
+                        <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link>
                     </nav>
 
-                    <div className="header-actions" style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '15px' }}>
-                        <form onSubmit={handleSearchSubmit} style={{ display: 'flex', alignItems: 'center', background: '#f5f5f5', borderRadius: '20px', padding: '5px 15px' }}>
+                    <div className="header-actions">
+                        <form onSubmit={handleSearchSubmit} className="search-form">
                             <input 
                                 type="text"
                                 placeholder="Search..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                style={{ border: 'none', background: 'transparent', outline: 'none', width: '120px', fontSize: '0.9rem' }}
                             />
-                            <button type="submit" style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#888', display: 'flex', alignItems: 'center', padding: 0 }}>
+                            <button type="submit">
                                 <FaSearch size={14} />
                             </button>
                         </form>
 
                         {userInfo ? (
-                            <div style={{ position: 'relative' }}>
+                            <div className="user-dropdown-container">
                                 <button
                                     onClick={() => setShowDropdown(!showDropdown)}
-                                    style={{
-                                        background: 'none',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                        fontSize: '0.9rem',
-                                        fontWeight: 600,
-                                        color: 'var(--color-maroon)',
-                                        padding: '5px 10px',
-                                        borderRadius: '4px',
-                                        backgroundColor: '#fff',
-                                        border: '1px solid #eee',
-                                        fontFamily: 'var(--font-sans)',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '8px'
-                                    }}
+                                    className="user-btn"
                                 >
-                                    <span style={{ maxWidth: '150px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                    <span className="user-name">
                                         {userInfo.name || userInfo.email.split('@')[0]}
                                     </span>
-                                    <span style={{ fontSize: '0.7rem' }}>▼</span>
+                                    <span className="arrow-down">▼</span>
                                 </button>
                                 {showDropdown && (
-                                    <div style={{ position: 'absolute', top: '100%', right: 0, marginTop: '10px', background: '#fff', boxShadow: '0 4px 15px rgba(0,0,0,0.1)', borderRadius: '4px', padding: '10px', minWidth: '120px', zIndex: 100 }}>
-                                        <button onClick={handleLogout} className="btn btn-outline" style={{ width: '100%', padding: '6px 12px', color: '#f1416c', borderColor: '#f1416c' }}>Logout</button>
+                                    <div className="user-dropdown">
+                                        <button onClick={handleLogout} className="logout-link">Logout</button>
                                     </div>
                                 )}
                             </div>
                         ) : (
-                            <Link to="/login" style={{ fontSize: '0.9rem', color: '#666' }}>Login</Link>
+                            <Link to="/login" className="login-link">Login</Link>
                         )}
-                        <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: '#E1306C', display: 'flex', alignItems: 'center' }}>
-                                <FaInstagram size={24} />
+                        <div className="social-links-minimal">
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon insta">
+                                <FaInstagram size={20} />
                             </a>
-                            <a href="https://wa.me/919346591460" target="_blank" rel="noopener noreferrer" style={{ color: '#25D366', display: 'flex', alignItems: 'center' }}>
-                                <FaWhatsapp size={24} />
+                            <a href="https://wa.me/919346591460" target="_blank" rel="noopener noreferrer" className="social-icon wa">
+                                <FaWhatsapp size={20} />
                             </a>
                         </div>
                     </div>
