@@ -1,0 +1,115 @@
+.collection-page {
+  min-height: 100vh;
+}
+
+.collection-hero {
+  background: linear-gradient(135deg, var(--color-maroon) 0%, var(--color-dark-maroon) 100%);
+  color: var(--color-white);
+  padding: 100px 0 60px;
+  text-align: center;
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 15px;
+  color: var(--color-white);
+}
+
+.page-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  opacity: 0.9;
+}
+
+.collection-section {
+  background-color: var(--color-cream);
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid var(--color-beige);
+}
+
+.filter-btn {
+  padding: 12px 28px;
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+  border: 2px solid var(--color-beige);
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-maroon);
+  color: var(--color-maroon);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background-color: var(--color-maroon);
+  color: var(--color-white);
+  border-color: var(--color-maroon);
+  box-shadow: var(--shadow-soft);
+}
+
+.collection-info {
+  margin-bottom: 30px;
+}
+
+.results-count {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.no-products {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--color-text-light);
+}
+
+.no-products svg {
+  margin: 0 auto 20px;
+  color: var(--color-text-light);
+  opacity: 0.5;
+}
+
+.no-products h3 {
+  margin-bottom: 10px;
+  color: var(--color-text-dark);
+}
+
+@media (max-width: 768px) {
+  .collection-hero {
+    padding: 80px 0 40px;
+  }
+
+  .filters {
+    gap: 10px;
+  }
+
+  .filter-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}

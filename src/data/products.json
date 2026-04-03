@@ -1,0 +1,149 @@
+[
+  {
+    "id": 1,
+    "name": "Royal Maroon Silk Ikkat Saree",
+    "category": "Silk Ikkat",
+    "price": 25000,
+    "availability": "Only 1 Piece",
+    "stock": 1,
+    "images": [
+      "/images/Royal_Maroon_Silk_Ikat_Saree.png",
+      "/images/Royal_Maroon_Silk_Ikat_Saree1.png",
+      "/images/Royal_Maroon_Silk_Ikat_Saree2.png",
+      "/images/Royal_Maroon_Silk_Ikat_Saree3.png"
+    ],
+    "fabric": "Pure Silk",
+    "length": "6.5 meters",
+    "blousePiece": "Included",
+    "deliveryTime": "Ready to Ship",
+    "careInstructions": "Dry clean only. Store in muslin cloth."
+  },
+  {
+    "id": 2,
+    "name": "Cream & Gold Cotton Ikkat Saree",
+    "category": "Cotton Ikkat",
+    "price": 12000,
+    "availability": "Made to Order (30 Days)",
+    "stock": 0,
+    "images": [
+      "/images/Cream_Gold_Cotton_Ikat_Saree.png",
+      "/images/Cream_Gold_Cotton_Ikat_Saree1.png",
+      "/images/Cream_Gold_Cotton_Ikat_Saree2.png", 
+      "/images/Cream_Gold_Cotton_Ikat_Saree3.png"      
+    ],
+    "fabric": "Pure Cotton",
+    "length": "6 meters",
+    "blousePiece": "Included",
+    "deliveryTime": "30 Days",
+    "careInstructions": "Hand wash with mild detergent. Dry in shade."
+  },
+  {
+    "id": 3,
+    "name": "Burgundy Traditional Ikkat Saree",
+    "category": "Silk Ikkat",
+    "price": 28000,
+    "availability": "Out of Stock",
+    "stock": 0,
+    "images": [
+      "/images/Burgundy_Traditional_Ikat_Saree.png",
+      "/images/Burgundy_Traditional_Ikat_Saree1.png",
+      "/images/Burgundy_Traditional_Ikat_Saree2.png"
+    ],
+    "fabric": "Pure Silk",
+    "length": "6.5 meters",
+    "blousePiece": "Included",
+    "deliveryTime": "Made to Order - 30 Days",
+    "careInstructions": "Dry clean only. Store in muslin cloth."
+  },
+  {
+    "id": 4,
+    "name": "Elegant Beige Silk Ikkat Saree",
+    "category": "Silk Ikkat",
+    "price": 22000,
+    "availability": "Only 1 Piece",
+    "stock": 1,
+    "images": [
+      "/images/Elegant_Beige_Silk_Ikat_Saree.png",
+      "/images/Elegant_Beige_Silk_Ikat_Saree1.png",
+      "/images/Elegant_Beige_Silk_Ikat_Saree2.png"
+    ],
+    "fabric": "Pure Silk",
+    "length": "6.5 meters",
+    "blousePiece": "Included",
+    "deliveryTime": "Ready to Ship",
+    "careInstructions": "Dry clean only. Store in muslin cloth."
+  },
+  {
+    "id": 5,
+    "name": "Classic White Cotton Ikkat Dupatta",
+    "category": "Dupattas",
+    "price": 4500,
+    "availability": "Only 1 Piece",
+    "stock": 1,
+    "images": [
+      "/images/Classic_White_Cotton_Ikat_Dupatta.png",
+      "/images/Classic_White_Cotton_Ikat_Dupatta1.png",
+      "/images/Classic_White_Cotton_Ikat_Dupatta2.png"
+    ],
+    "fabric": "Pure Cotton",
+    "length": "2.5 meters",
+    "blousePiece": "N/A",
+    "deliveryTime": "Ready to Ship",
+    "careInstructions": "Hand wash with mild detergent. Dry in shade."
+  },
+  {
+    "id": 6,
+    "name": "Traditional Maroon Cotton Ikkat Saree",
+    "category": "Cotton Ikkat",
+    "price": 10000,
+    "availability": "Made to Order (30 Days)",
+    "stock": 0,
+    "images": [
+      "/images/Traditional_Maroon_Cotton_Ikat_Saree.png",
+      "/images/Traditional_Maroon_Cotton_Ikat_Saree1.png",
+      "/images/Traditional_Maroon_Cotton_Ikat_Saree2.png"
+    ],
+    "fabric": "Pure Cotton",
+    "length": "6 meters",
+    "blousePiece": "Included",
+    "deliveryTime": "30 Days",
+    "careInstructions": "Hand wash with mild detergent. Dry in shade."
+  },
+  {
+    "id": 7,
+    "name": "Luxury Gold & Cream Silk Ikkat Lehenga",
+    "category": "Lehengas",
+    "price": 35000,
+    "availability": "Made to Order (30 Days)",
+    "stock": 0,
+    "images": [
+      "/images/Luxury_Gold_Cream_Silk_Ikat_Lehenga.png",
+      "/images/Luxury_Gold_Cream_Silk_Ikat_Lehenga1.png",
+      "/images/Luxury_Gold_Cream_Silk_Ikat_Lehenga2.png"
+    ],
+    "fabric": "Pure Silk",
+    "length": "Lehenga Set",
+    "blousePiece": "Included",
+    "deliveryTime": "30 Days",
+    "careInstructions": "Dry clean only. Store in muslin cloth."
+  },
+  {
+    "id": 8,
+    "name": "Heritage Red Silk Ikkat Saree",
+    "category": "Silk Ikkat",
+    "price": 26000,
+    "availability": "Only 1 Piece",
+    "stock": 1,
+    "images": [
+      "/images/Heritage_Red_Silk_Ikat_Saree.png",
+      "/images/Heritage_Red_Silk_Ikat_Saree1.png",
+      "/images/Heritage_Red_Silk_Ikat_Saree2.png",
+      "/images/Heritage_Red_Silk_Ikat_Saree3.png"
+    ],
+    "fabric": "Pure Silk",
+    "length": "6.5 meters",
+    "blousePiece": "Included",
+    "deliveryTime": "Ready to Ship",
+    "careInstructions": "Dry clean only. Store in muslin cloth."
+  }
+]
